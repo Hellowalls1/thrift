@@ -1,0 +1,31 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0.75rem;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2rem;
+}
+
+.dataContainer {
+    padding: 2rem;
+    flex: 4;
+}
+.listContainer {
+    padding-top: 3rem;
+    border-top: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+}
+
+.links {
+    flex: 1;
+}
+
+.listDisplay {
+    flex: 5;
+}
