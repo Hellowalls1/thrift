@@ -5,6 +5,7 @@ export default ({ storeLocation }) => (
     <section className="store">
         <h3 className="store__name">{storeLocation.name}</h3>
         <div className="store__address">{storeLocation.address}</div>
-        <div className="store__hours">Customer: {storeLocation.storeHours}</div>
+        <div className="store__hours">{storeLocation.storeHours}</div>
+        <div className="store__shopper">{storeLocation.}</div>
     </section>
 )

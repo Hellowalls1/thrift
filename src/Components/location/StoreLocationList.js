@@ -1,7 +1,8 @@
 import React, { useContext } from "react"
-import "./StoreLocation.css"
 import { StoreLocationContext } from "./StoreLocationProvider" //importing context object from Provider
 import StoreLocation from "./StoreLocation"
+import { Button } from  "reactstrap"
+import "./StoreLocation.css"
 
 export default () => {
 
@@ -10,11 +11,14 @@ export default () => {
     const { storeLocations } = useContext(StoreLocationContext) //array of customers from the data provider
 
     return (
+        <>
+        <Button>Add Store Location</Button>
         <div className="storeLocations">
 
         {
-            storeLocations.map(loc => <StoreLocation key={loc.id} location={loc} />) 
+            storeLocations.map(loc => <StoreLocation key={loc.id} storeLocation={loc} />) 
         }
         </div>
+        </>
     )
 }

@@ -20,7 +20,7 @@ export const StoreLocationProvider = (props) => {
             .then(setStoreLocations)
     }
 
-    const addStoreLocations = customer => {
+    const addStoreLocations = storeLocation => {
         return fetch("http://localhost:8088/storeLocations", {
             method: "POST",
             headers: {
