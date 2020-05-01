@@ -15,7 +15,7 @@ export default props => {
     const constructNewStoreLocation = () => { 
 
         //SHOULD userID GET ITS VALUE FROM LOCALSTORAGE??!?!
-        const userId = (userId.current.value)
+        const userId =  parseInt(localStorage.getItem("thrift_customer"))
 
         //locationId === 0 is the "choose" message that is displaying 
         if (userId === 0) {
