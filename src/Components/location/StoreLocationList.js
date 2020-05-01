@@ -1,22 +1,32 @@
 import React, { useContext } from "react"
 import { StoreLocationContext } from "./StoreLocationProvider" //importing context object from Provider
 import StoreLocation from "./StoreLocation"
+import { UserContext } from "./UserProvider"
 import { Button } from  "reactstrap"
 import "./StoreLocation.css"
 
 export default () => {
 
-    //Brings in Array of Locations/ useContext() hook allows you to use data structures and functions that a parent provider component exposes
-    /* use the .map() array method to iterate the array of employees and generate HTML for each one by invoking the Animal component function */
-    const { storeLocations } = useContext(StoreLocationContext) //array of customers from the data provider
+    const { storeLocations } = useContext(StoreLocationContext) 
+    const  { users } = useContext(UserContext)
 
     return (
         <>
-        <Button>Add Store Location</Button>
+        <Button>Add A Store</Button>
         <div className="storeLocations">
 
         {
-            storeLocations.map(loc => <StoreLocation key={loc.id} storeLocation={loc} />) 
+            storeLocations.map(loc => {
+                const matchingStoreShopper = users.find(u => u.id === loc.userId)
+            
+            
+           return <StoreLocation key={loc.id}
+           user={matchingStoreShopper}
+           storeLocation={loc} />
+           
+          
+           
+            }) 
         }
         </div>
         </>
