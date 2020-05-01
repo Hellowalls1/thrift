@@ -10,7 +10,7 @@ export default ({ storeLocation, user }) => (
         <h3 className="store__name">{storeLocation.name}</h3>
         <div className="store__address">Address: {storeLocation.address}</div>
         <div className="store__hours">Store Hours: {storeLocation.storeHours}</div>
-        <div className="store__shopper">Shopper: {user.firstName} {user.lastName}</div>
+       
 
         <Button>Delete</Button>
     </section>
