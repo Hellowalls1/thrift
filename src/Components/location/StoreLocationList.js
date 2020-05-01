@@ -8,7 +8,7 @@ import "./StoreLocation.css"
 
 export default () => {
 
-    const { storeLocations } = useContext(StoreLocationContext) 
+    const { storeLocations, removeStoreLocation } = useContext(StoreLocationContext) 
     const  { users } = useContext(UserContext)
 
     const [modal, setModal] = useState(false)
@@ -28,10 +28,12 @@ export default () => {
            user={matchingStoreShopper}
            storeLocation={loc} />
            
-          
            
-            }) 
-        }
+           
+        }) 
+        
+    }
+      
         </div>
         <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
