@@ -79,25 +79,7 @@ export default props => {
                     />
                 </div>
             </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="shopper">Assign to Shopper: </label>
-                    <select
-                        defaultValue=""
-                        name="shopper"
-                        ref={userId}
-                        id="shopper"
-                        className="form-control"
-                    >
-                        <option value="0">Select a Shopper</option>
-                        {users.map(u => (
-                            <option key={u.id} value={u.id}>
-                                {u.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </fieldset>
+      
             <button type="submit"
                 onClick={
                     evt => {
