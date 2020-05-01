@@ -4,50 +4,52 @@ import React, { useState, useEffect } from "react"
     The context is imported and used by individual components
     that need data
 */
-export const StoreLocationContext = React.createContext()
+export const UserContext = React.createContext()
 
 /*
  This component establishes what data can be used.
  */
-export const StoreLocationProvider = (props) => {
-    const [storeLocations, setStoreLocations] = useState([])
+export const UserProvider = (props) => {
+    const [users, setUsers] = useState([])
 
   
 
-    const getStoreLocations = () => {
-        return fetch("http://localhost:8088/storeLocations")
+    const getUsers = () => {
+        return fetch("http://localhost:8088/users")
             .then(res => res.json())
-            .then(setStoreLocations)
+            .then(setUsers)
     }
 
-    const addStoreLocations = storeLocation => {
-        return fetch("http://localhost:8088/storeLocations", {
+    const addUsers = user => {
+        return fetch("http://localhost:8088/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(storeLocation)
+            body: JSON.stringify(user)
         })
-            .then(getStoreLocations)
+            .then(getUsers)
     }
+
+
 
     /*
         Load all storeLocations when the component is mounted. Ensure that
         an empty array is the second argument to avoid infinite loop.
     */
     useEffect(() => {
-        getStoreLocations()
+        getUsers()
     }, [])
 
     useEffect(() => {
         console.log("****  LOCATION APPLICATION STATE CHANGED  ****")
-    }, [storeLocations])
+    }, [users])
 
     return (
-        <StoreLocationContext.Provider value={{
-            storeLocations, addStoreLocations
+        <UserContext.Provider value={{
+            users, addUsers
         }}>
             {props.children}
-        </StoreLocationContext.Provider>
+        </UserContext.Provider>
     )
 }
