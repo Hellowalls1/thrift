@@ -31,6 +31,13 @@ export const StoreLocationProvider = (props) => {
             .then(getStoreLocations)
     }
 
+    const removeStoreLocation = storeLocationId => {
+        return fetch(`http://localhost:8088/storeLocations/${storeLocationId}`, {
+            method: "DELETE"
+        })
+            .then(getStoreLocations)
+    }
+
     /*
         Load all storeLocations when the component is mounted. Ensure that
         an empty array is the second argument to avoid infinite loop.
@@ -45,7 +52,7 @@ export const StoreLocationProvider = (props) => {
 
     return (
         <StoreLocationContext.Provider value={{
-            storeLocations, addStoreLocation
+            storeLocations, addStoreLocation, removeStoreLocation
         }}>
             {props.children}
         </StoreLocationContext.Provider>
