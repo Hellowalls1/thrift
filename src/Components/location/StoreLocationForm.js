@@ -1,16 +1,15 @@
 import React, { useContext, useRef } from "react"
 import { StoreLocationContext } from "./StoreLocationProvider"
-import { UserContext } from "./UserProvider"
 import "./StoreLocation.css"
 
 export default props => {
     const { addStoreLocation } = useContext(StoreLocationContext)
-    const { users } = useContext(UserContext)
+    
 
     const name = useRef()
     const address = useRef()
     const storeHours = useRef()
-    const userId = useRef()
+    
 
     const constructNewStoreLocation = () => { 
 
