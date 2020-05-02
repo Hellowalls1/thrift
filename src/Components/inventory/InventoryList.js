@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react"
 import { InventoryItemContext } from "./InventoryProvider" //importing context object from Provider
 import { ItemTypeContext } from "./ItemTypeProvider"
+import { StoreLocationContext } from "../location/StoreLocationProvider"
 import { Button} from "reactstrap"
 import InventoryItem from "./InventoryItem"
 
@@ -12,6 +13,7 @@ export default () => {
     // const  { users } = useContext(UserContext)
     const { inventoryItems } = useContext(InventoryItemContext)
     const { itemTypes } = useContext(ItemTypeContext)
+    const { storeLocations } =useContext(StoreLocationContext)
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
@@ -27,9 +29,12 @@ export default () => {
         {
                inventoryItems.map(inv => {
                   const matchingItemType = itemTypes.find(type => type.id === inv.itemTypeId)
-               
+                  const matchingStoreLocation = storeLocations.find(store => store.id === inv.locationId
+                    
+                    )
               return <InventoryItem key={inv.id}
               type={matchingItemType}
+              location={matchingStoreLocation}
               inventoryItem={inv} />
                 })
         }) 
