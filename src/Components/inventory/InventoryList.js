@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react"
 import { InventoryItemContext } from "./InventoryProvider" //importing context object from Provider
 import { ItemTypeContext } from "./ItemTypeProvider"
 import { StoreLocationContext } from "../location/StoreLocationProvider"
-import { Button} from "reactstrap"
+import { Button, Modal, ModalHeader, ModalBody} from "reactstrap"
 import InventoryItem from "./InventoryItem"
-
+import InventoryItemForm from "./InventoryForm"
+import "./Inventory.css"
 
 
 export default () => {
@@ -42,6 +43,14 @@ export default () => {
     }
       
         </div>
+        <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>
+                    New Location
+                </ModalHeader>
+                <ModalBody>
+                    <InventoryItemForm toggler={toggle} />
+                </ModalBody>
+            </Modal>
           </>
     )
 }
