@@ -4,6 +4,9 @@ import StoreLocationList from "./location/StoreLocationList"
 import { UserProvider } from "./location/UserProvider"
 import "./Layout.css"
 import "./Thrift.css"
+import { InventoryProvider } from "./inventory/InventoryProvider"
+import { ItemTypeProvider } from "./inventory/ItemTypeProvider"
+import InventoryList from "./inventory/InventoryList"
 
 
 export const Dashboard = () => (
@@ -13,10 +16,16 @@ export const Dashboard = () => (
 
         <h2>Locations</h2>
 
+        
+        <InventoryProvider>
+        <ItemTypeProvider>
         <StoreLocationProvider>
         <UserProvider>
             <StoreLocationList />
+            <InventoryList />
         </UserProvider>
         </StoreLocationProvider>
+        </ItemTypeProvider>
+        </InventoryProvider>
     </>
 )
