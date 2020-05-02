@@ -1,12 +1,12 @@
 import React, { useContext, useRef } from "react"
-import { InventoryItemContext } from "./InventoryItemProvider"
+import { InventoryItemContext } from "./InventoryProvider"
 import { StoreLocationContext } from "../location/StoreLocationProvider"
 import { ItemTypeContext } from "./ItemTypeProvider"
-import "./StoreLocation.css"
+import "./Inventory.css"
 
 export default props => {
     const { addInventoryItems } = useContext(InventoryItemContext)
-    const { locations } = useContext(StoreLocationContext)
+    const { storeLocations } = useContext(StoreLocationContext)
     const { itemTypes } = useContext(ItemTypeContext)
 
     const name = useRef()
@@ -15,9 +15,11 @@ export default props => {
     const description = useRef()
     const purchasePrice = useRef()
     const salePrice = useRef()
+    const forSale = useRef()
+    const time = useRef()
     
 
-    const constructNewStoreLocation = () => { 
+    const constructNewItem = () => { 
 
         //SHOULD userID GET ITS VALUE FROM LOCALSTORAGE??!?!
         const userId =  parseInt(localStorage.getItem("thrift_customer"))
@@ -28,11 +30,17 @@ export default props => {
         } else {
             
             //addEmployee is the defined variable to represent the POST function in the employee data provider 
-            addStoreLocation({
+            addInventoryItems({
                 name: name.current.value,
-                address: address.current.value,
-                storeHours: storeHours.current.value,
-                userId: userId,
+                itemTypeId: type.current.value,
+                locationId: location.current.value,
+                description: description.current.value,
+                purchasePrice: purchasePrice.current.value,
+                forSale: forSale.current.value,
+                salePrice: salePrice.current.value,
+                time: time.current.value
+
+
                })
             .then(props.toggler)
         }
@@ -55,25 +63,7 @@ export default props => {
                     />
                 </div>
             </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="location">Purchase Location: </label>
-                    <select
-                        defaultValue=""
-                        name="location"
-                        ref={location}
-                        id="purchaseLocation"
-                        className="form-control"
-                    >
-                        <option value="0">Select a location</option>
-                        {locations.map(e => (
-                            <option key={e.id} value={e.id}>
-                                {e.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </fieldset>
+
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="type">Item Type: </label>
@@ -85,14 +75,35 @@ export default props => {
                         className="form-control"
                     >
                         <option value="0">Select a Type</option>
-                        {itemTypes.map(i => (
-                            <option key={i.id} value={i.id}>
-                                {i.name}
+                        {itemTypes.map(e => (
+                            <option key={e.id} value={e.id}>
+                                {e.type}
                             </option>
                         ))}
                     </select>
                 </div>
             </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="location">Purchase Location: </label>
+                    <select
+                        defaultValue=""
+                        name="location"
+                        ref={location}
+                        id="purchaseLocation"
+                        className="form-control"
+                    >
+                        <option value="0">Select a location</option>
+                        {storeLocations.map(e => (
+                            <option key={e.id} value={e.id}>
+                                {e.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </fieldset>
+
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="itemDescription">Description: </label>
@@ -125,6 +136,21 @@ export default props => {
             
             <fieldset>
                 <div className="form-group">
+                    <label htmlFor="forSale">Select if Item is For Sale: </label>
+                    <input
+                        type="checkbox"
+                        id="forSale"
+                        ref={forSale}
+                        required
+                        autoFocus
+                        className="form-control"
+                        placeholder="Is it for Sale?"
+                    />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
                     <label htmlFor="salePrice">Sale Price: </label>
                     <input
                         type="text"
@@ -137,12 +163,27 @@ export default props => {
                     />
                 </div>
             </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="time">Time Purchased: </label>
+                    <input
+                        type="text"
+                        id="time"
+                        ref={time}
+                        required
+                        autoFocus
+                        className="form-control"
+                        placeholder="Time Purchased"
+                    />
+                </div>
+            </fieldset>
       
             <button type="submit"
                 onClick={
                     evt => {
                         evt.preventDefault() // Prevent browser from submitting the form
-                        constructNewStoreLocation()
+                        constructNewItem()
                     }
                 }
                 className="btn btn-primary">

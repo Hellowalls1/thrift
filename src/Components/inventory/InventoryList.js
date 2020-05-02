@@ -4,7 +4,7 @@ import { ItemTypeContext } from "./ItemTypeProvider"
 import { StoreLocationContext } from "../location/StoreLocationProvider"
 import { Button, Modal, ModalHeader, ModalBody} from "reactstrap"
 import InventoryItem from "./InventoryItem"
-import InventoryItemForm from "./InventoryForm"
+import InventoryItemForm from "./InventoryItemForm"
 import "./Inventory.css"
 
 
