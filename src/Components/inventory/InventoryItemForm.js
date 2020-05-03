@@ -23,8 +23,8 @@ export default props => {
 
         //SHOULD userID GET ITS VALUE FROM LOCALSTORAGE??!?!
         const userId =  parseInt(localStorage.getItem("thrift_customer"))
-
-        //locationId === 0 is the "choose" message that is displaying 
+        const itemType = parseInt(type.current.value)
+        const selectedLocationId = parseInt(location.current.value)
         if (userId === 0) {
             window.alert("Please select a shopper")
         } else {
@@ -32,8 +32,8 @@ export default props => {
             //addEmployee is the defined variable to represent the POST function in the employee data provider 
             addInventoryItems({
                 name: name.current.value,
-                itemTypeId: type.current.value,
-                locationId: location.current.value,
+                itemTypeId: itemType,
+                locationId: selectedLocationId,
                 description: description.current.value,
                 purchasePrice: purchasePrice.current.value,
                 forSale: forSale.current.value,

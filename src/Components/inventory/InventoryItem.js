@@ -1,5 +1,6 @@
 import React from "react"
 
+
 export default ({ inventoryItem, type, location }) => (
     <section className="inventoryItem">
 
