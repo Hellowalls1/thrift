@@ -8,7 +8,7 @@ export default props => {
     const { addInventoryItems } = useContext(InventoryItemContext)
     const { storeLocations } = useContext(StoreLocationContext)
     const { itemTypes } = useContext(ItemTypeContext)
-
+    
     const name = useRef()
     const location = useRef()
     const type = useRef()    
@@ -18,33 +18,31 @@ export default props => {
     const forSale = useRef()
     const time = useRef()
     
-
+    const newUserId =  parseInt(localStorage.getItem("thrift_customer"))
+    
     const constructNewItem = () => { 
-
+        
         //SHOULD userID GET ITS VALUE FROM LOCALSTORAGE??!?!
-        const userId =  parseInt(localStorage.getItem("thrift_customer"))
         const itemType = parseInt(type.current.value)
         const selectedLocationId = parseInt(location.current.value)
-        // const userDependentLocations = storeLocations.map (i => i.userId === userId )
-        if (userId === 0) {
-            window.alert("Please select a shopper")
-        } else {
+        
+        //addEmployee is the defined variable to represent the POST function in the employee data provider 
+        // const userDependentLocations = storeLocations.map(i => i.userId === activeUser )
+
+        addInventoryItems({
+            name: name.current.value,
+            itemTypeId: itemType,
+            locationId: selectedLocationId,
+            description: description.current.value,
+            purchasePrice: purchasePrice.current.value,
+            forSale: forSale.current.value,
+            salePrice: salePrice.current.value,
+            time: time.current.value
             
-            //addEmployee is the defined variable to represent the POST function in the employee data provider 
-            addInventoryItems({
-                name: name.current.value,
-                itemTypeId: itemType,
-                locationId: selectedLocationId,
-                description: description.current.value,
-                purchasePrice: purchasePrice.current.value,
-                forSale: forSale.current.value,
-                salePrice: salePrice.current.value,
-                time: time.current.value
-                
-                
-            })
-            .then(props.toggler)
-        }
+            
+        })
+        .then(props.toggler)
+        
     }
     
     return (
@@ -96,11 +94,12 @@ export default props => {
                         className="form-control"
                         >
                         <option value="0">Select a location</option>
-                        {storeLocations.map(e => (
-                            <option key={e.id} value={e.id}>
-                                {e.name}
+                       {storeLocations.map(i => 
+                         
+                          <option key={i.id} value={i.id}>
+                                {i.name}
                             </option>
-                        ))}
+                            )  }
                     </select>
                 </div>
             </fieldset>

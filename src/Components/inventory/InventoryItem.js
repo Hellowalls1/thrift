@@ -12,5 +12,6 @@ export default ({ inventoryItem, type, location }) => (
         <div className="inventory__forSale">For Sale ? : {inventoryItem.forSale ? "true" : "false"}</div>
         <div className="inventory__salePrice">Sale Price: {inventoryItem.salePrice}</div>
         <div className="inventory__timePurchased">Time Purchased: {inventoryItem.time}</div>
+        
     </section>
 )

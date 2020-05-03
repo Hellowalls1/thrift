@@ -6,7 +6,7 @@ export default ({ storeLocation }) => {
 
 //pulling in all of my store locations and my DELETE
 const { storeLocations, removeStoreLocation } = useContext(StoreLocationContext)
-const [ setStoreLocations] = useState({storeLocation: {id: 0}, name: null, address: null, storeHours: null})
+const [e, setStoreLocations] = useState({storeLocation: {id: 0}, name: null, address: null, storeHours: null})
 
  return (
     <section className="store">
