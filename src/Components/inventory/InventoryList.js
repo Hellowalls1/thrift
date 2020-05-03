@@ -10,11 +10,10 @@ import "./Inventory.css"
 
 export default () => {
 
-    // const { storeLocations } = useContext(StoreLocationContext) 
     // const  { users } = useContext(UserContext)
     const { inventoryItems } = useContext(InventoryItemContext)
     const { itemTypes } = useContext(ItemTypeContext)
-    const { storeLocations } =useContext(StoreLocationContext)
+    const { storeLocations } = useContext(StoreLocationContext)
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
@@ -32,7 +31,8 @@ export default () => {
                   const matchingItemType = itemTypes.find(type => type.id === inv.itemTypeId)
                   const matchingStoreLocation = storeLocations.find(store => store.id === inv.locationId
                     
-                    )
+                   )
+                 
               return <InventoryItem key={inv.id}
               type={matchingItemType}
               location={matchingStoreLocation}

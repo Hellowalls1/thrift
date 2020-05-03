@@ -25,6 +25,7 @@ export default props => {
         const userId =  parseInt(localStorage.getItem("thrift_customer"))
         const itemType = parseInt(type.current.value)
         const selectedLocationId = parseInt(location.current.value)
+        // const userDependentLocations = storeLocations.map (i => i.userId === userId )
         if (userId === 0) {
             window.alert("Please select a shopper")
         } else {
@@ -39,13 +40,13 @@ export default props => {
                 forSale: forSale.current.value,
                 salePrice: salePrice.current.value,
                 time: time.current.value
-
-
-               })
+                
+                
+            })
             .then(props.toggler)
         }
     }
-
+    
     return (
         <form className="itemForm">
             <h2 className="itemform__title">New Item</h2>
@@ -60,7 +61,7 @@ export default props => {
                         autoFocus
                         className="form-control"
                         placeholder="Item Name"
-                    />
+                        />
                 </div>
             </fieldset>
 
@@ -73,7 +74,7 @@ export default props => {
                         ref={type}
                         id="itemType"
                         className="form-control"
-                    >
+                        >
                         <option value="0">Select a Type</option>
                         {itemTypes.map(e => (
                             <option key={e.id} value={e.id}>
@@ -93,7 +94,7 @@ export default props => {
                         ref={location}
                         id="purchaseLocation"
                         className="form-control"
-                    >
+                        >
                         <option value="0">Select a location</option>
                         {storeLocations.map(e => (
                             <option key={e.id} value={e.id}>
