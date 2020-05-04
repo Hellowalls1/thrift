@@ -37,7 +37,7 @@ export default props => {
             purchasePrice: purchasePrice.current.value,
             forSale: forSale.current.value,
             salePrice: salePrice.current.value,
-            time: time.current.value
+            timeStamp: new Date()
             
             
         })
@@ -164,7 +164,7 @@ export default props => {
                 </div>
             </fieldset>
 
-            <fieldset>
+            {/* <fieldset>
                 <div className="form-group">
                     <label htmlFor="time">Time Purchased: </label>
                     <input
@@ -177,7 +177,7 @@ export default props => {
                         placeholder="Time Purchased"
                     />
                 </div>
-            </fieldset>
+            </fieldset> */}
       
             <button type="submit"
                 onClick={

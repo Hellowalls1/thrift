@@ -18,10 +18,10 @@ export default () => {
     const toggle = () => setModal(!modal)
 
     //setting the activeUser to the current user in local storage
-    const activeUser = parseInt(localStorage.getItem("thrift_customer"))
+    // const activeUser = parseInt(localStorage.getItem("thrift_customer"))
 
     //constructs a new array of storeLocations who have a userId === current user
-    const userLocations = storeLocations.filter(loc => loc.userId === activeUser) 
+    // const userLocations = storeLocations.filter(loc => loc.userId === activeUser) 
     
     return (
         <>
@@ -31,12 +31,13 @@ export default () => {
         {
                inventoryItems.map(inv => {
                   const matchingItemType = itemTypes.find(type => type.id === inv.itemTypeId)
-                 
+                const theLocations = storeLocations.find(s => s.id === inv.locationId)
+
               return <InventoryItem key={inv.id}
               type={matchingItemType}
-              location={storeLocations}
+              location={theLocations}
               inventoryItem={inv} />
-                })
+                
         }) 
         
     }
