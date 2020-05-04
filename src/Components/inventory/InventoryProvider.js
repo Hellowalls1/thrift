@@ -31,10 +31,22 @@ export const InventoryProvider = (props) => {
     }
 
     const removeInventoryItem = inventoryItemId => {
-        return fetch(`http://localhost:8088/storeLocations/${inventoryItemId}`, {
+        return fetch(`http://localhost:8088/inventoryItems/${inventoryItemId}`, {
             method: "DELETE"
         })
             .then(getInventoryItems)
+    }
+
+    
+    const updateInventoryItem = inventoryItemId => {
+        return fetch(`http://localhost:8088/animals/${inventoryItemId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(inventoryItemId)
+        })
+            .then(updateInventoryItem)
     }
 
     /*
@@ -51,7 +63,7 @@ export const InventoryProvider = (props) => {
 
     return (
         <InventoryItemContext.Provider value={{
-            inventoryItems, addInventoryItems, removeInventoryItem
+            inventoryItems, addInventoryItems, removeInventoryItem, updateInventoryItem
         }}>
             {props.children}
         </InventoryItemContext.Provider>

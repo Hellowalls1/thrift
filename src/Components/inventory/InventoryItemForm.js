@@ -20,6 +20,7 @@ export default props => {
     
     const newUserId =  parseInt(localStorage.getItem("thrift_customer"))
     
+    const userDependentLocations = storeLocations.filter(i => i.userId === newUserId )
     const constructNewItem = () => { 
         
         //SHOULD userID GET ITS VALUE FROM LOCALSTORAGE??!?!
@@ -27,7 +28,6 @@ export default props => {
         const selectedLocationId = parseInt(location.current.value)
         
         //addEmployee is the defined variable to represent the POST function in the employee data provider 
-        // const userDependentLocations = storeLocations.map(i => i.userId === activeUser )
 
         addInventoryItems({
             name: name.current.value,
@@ -35,9 +35,12 @@ export default props => {
             locationId: selectedLocationId,
             description: description.current.value,
             purchasePrice: purchasePrice.current.value,
-            forSale: forSale.current.value,
+            forSale: forSale.current.checked,
             salePrice: salePrice.current.value,
-            timeStamp: new Date()
+            timeStamp: new Date(),
+            
+    
+
             
             
         })
@@ -94,7 +97,7 @@ export default props => {
                         className="form-control"
                         >
                         <option value="0">Select a location</option>
-                       {storeLocations.map(i => 
+                       {userDependentLocations.map(i => 
                          
                           <option key={i.id} value={i.id}>
                                 {i.name}
