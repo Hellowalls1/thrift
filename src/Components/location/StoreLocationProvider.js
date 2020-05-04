@@ -15,6 +15,7 @@ export const StoreLocationProvider = (props) => {
   
 
     const getStoreLocations = () => {
+
         return fetch("http://localhost:8088/storeLocations")
             .then(res => res.json())
             .then(setStoreLocations)

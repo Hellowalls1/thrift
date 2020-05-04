@@ -6,7 +6,7 @@ export default ({ storeLocation }) => {
 
 //pulling in all of my store locations and my DELETE
 const { storeLocations, removeStoreLocation } = useContext(StoreLocationContext)
-const [selectedStoreLocation, setStoreLocations] = useState({storeLocation: {id: 0}, name: null, address: null, storeHours: null})
+const [e, setStoreLocations] = useState({storeLocation: {id: 0}, name: null, address: null, storeHours: null})
 
  return (
     <section className="store">
@@ -16,9 +16,11 @@ const [selectedStoreLocation, setStoreLocations] = useState({storeLocation: {id:
         <div className="store__hours">Store Hours: {storeLocation.storeHours}</div>
         <Button color="danger" onClick={() => {
 
-                            removeStoreLocation(storeLocation.id) //utilizing the delete from the provider and passing the storeLocation id
-                            setStoreLocations({ storeLocations }) //repopulating the page with the new store locations
-                        }}>Delete</Button>
+        removeStoreLocation(storeLocation.id) //utilizing the delete from the provider and passing the storeLocation id
+        setStoreLocations({ storeLocations }) //repopulating the page with the new store locations
+}}>Delete</Button>
+
+  
     </section>
 
   )  } 

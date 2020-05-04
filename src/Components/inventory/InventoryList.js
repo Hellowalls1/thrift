@@ -1,21 +1,26 @@
 import React, { useContext, useState } from "react"
 import { InventoryItemContext } from "./InventoryProvider" //importing context object from Provider
-import { Button} from "reactstrap"
+import { ItemTypeContext } from "./ItemTypeProvider"
+import { StoreLocationContext } from "../location/StoreLocationProvider"
+import { Button, Modal, ModalHeader, ModalBody} from "reactstrap"
 import InventoryItem from "./InventoryItem"
-
+import InventoryItemForm from "./InventoryItemForm"
+import "./Inventory.css"
 
 
 export default () => {
 
-    // const { storeLocations } = useContext(StoreLocationContext) 
     // const  { users } = useContext(UserContext)
     const { inventoryItems } = useContext(InventoryItemContext)
-
+    const { itemTypes } = useContext(ItemTypeContext)
+    const { storeLocations } = useContext(StoreLocationContext)
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
+    //setting the activeUser to the current user in local storage
     // const activeUser = parseInt(localStorage.getItem("thrift_customer"))
 
+    //constructs a new array of storeLocations who have a userId === current user
     // const userLocations = storeLocations.filter(loc => loc.userId === activeUser) 
     
     return (
@@ -24,21 +29,28 @@ export default () => {
         <div className="inventoryItems">
 
         {
-            
-            //filter through the store locations array and find the location user id that is equal to the active user
-            
-              
+               inventoryItems.map(inv => {
+                  const matchingItemType = itemTypes.find(type => type.id === inv.itemTypeId)
+                const theLocations = storeLocations.find(s => s.id === inv.locationId)
 
-            //map through the new userLocations array
-         
-               inventoryItems.map(inv => <InventoryItem key={inv.id}
-           
-          inventoryItem={inv} />
-    )}) 
+              return <InventoryItem key={inv.id}
+              type={matchingItemType}
+              location={theLocations}
+              inventoryItem={inv} />
+                
+        }) 
         
     }
       
         </div>
+        <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>
+                    New Location
+                </ModalHeader>
+                <ModalBody>
+                    <InventoryItemForm toggler={toggle} />
+                </ModalBody>
+            </Modal>
           </>
     )
 }
