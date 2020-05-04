@@ -18,21 +18,32 @@ export default () => {
     const toggle = () => setModal(!modal)
 
     //setting the activeUser to the current user in local storage
-    // const activeUser = parseInt(localStorage.getItem("thrift_customer"))
+    const activeUser = parseInt(localStorage.getItem("thrift_customer"))
 
     //constructs a new array of storeLocations who have a userId === current user
-    // const userLocations = storeLocations.filter(loc => loc.userId === activeUser) 
+    const userLocations = storeLocations.filter(loc => loc.userId === activeUser) //returning a new array of filter store locations and defining in a variable
+    let  currentUserInventory = [] 
+        userLocations.map(ul => { //mapping over the user locations
+        inventoryItems.map(il => { //for each filtered location you are checking to see if the inventoryItem's location id is equal to the new userLocationId
+            if (il.locationId === ul.id) {
+                currentUserInventory.push(il) //pushing all of the filtere inventoryItems into a new array that fit all of the abouve conditions
+            }
+       })
+        
+    })
+    console.log(currentUserInventory)
+    
     
     return (
         <>
         <Button onClick={toggle}>Add an Item</Button>
         <div className="inventoryItems">
 
-        {
-               inventoryItems.map(inv => {
-                  const matchingItemType = itemTypes.find(type => type.id === inv.itemTypeId) 
-                const theLocations = storeLocations.find(s => s.id === inv.locationId) || {} 
-
+        {       
+               currentUserInventory.map(inv => {
+                   const matchingItemType = itemTypes.find(type => type.id === inv.itemTypeId) 
+                 const theLocations = storeLocations.find(s => s.id === inv.locationId) || {} 
+                   
               return <InventoryItem key={inv.id}
               type={matchingItemType}
               location={theLocations}

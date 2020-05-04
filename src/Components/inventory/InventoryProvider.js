@@ -37,6 +37,18 @@ export const InventoryProvider = (props) => {
             .then(getInventoryItems)
     }
 
+    
+    const updateInventoryItem = inventoryItemId => {
+        return fetch(`http://localhost:8088/animals/${inventoryItemId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(inventoryItemId)
+        })
+            .then(updateInventoryItem)
+    }
+
     /*
         Load all storeLocations when the component is mounted. Ensure that
         an empty array is the second argument to avoid infinite loop.
@@ -51,7 +63,7 @@ export const InventoryProvider = (props) => {
 
     return (
         <InventoryItemContext.Provider value={{
-            inventoryItems, addInventoryItems, removeInventoryItem
+            inventoryItems, addInventoryItems, removeInventoryItem, updateInventoryItem
         }}>
             {props.children}
         </InventoryItemContext.Provider>
