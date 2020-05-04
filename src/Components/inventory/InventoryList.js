@@ -30,8 +30,8 @@ export default () => {
 
         {
                inventoryItems.map(inv => {
-                  const matchingItemType = itemTypes.find(type => type.id === inv.itemTypeId)
-                const theLocations = storeLocations.find(s => s.id === inv.locationId)
+                  const matchingItemType = itemTypes.find(type => type.id === inv.itemTypeId) 
+                const theLocations = storeLocations.find(s => s.id === inv.locationId) || {} 
 
               return <InventoryItem key={inv.id}
               type={matchingItemType}

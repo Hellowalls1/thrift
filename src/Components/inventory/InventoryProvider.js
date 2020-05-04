@@ -31,7 +31,7 @@ export const InventoryProvider = (props) => {
     }
 
     const removeInventoryItem = inventoryItemId => {
-        return fetch(`http://localhost:8088/storeLocations/${inventoryItemId}`, {
+        return fetch(`http://localhost:8088/inventoryItems/${inventoryItemId}`, {
             method: "DELETE"
         })
             .then(getInventoryItems)
