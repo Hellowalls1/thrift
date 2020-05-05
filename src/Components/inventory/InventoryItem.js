@@ -1,21 +1,19 @@
 import { InventoryItemContext } from "./InventoryProvider"
 import { Button, Modal, ModalHeader, ModalBody} from "reactstrap"
 import React, { useContext, useState } from "react"
-import  { editInventoryItemForm } from "./InventoryEditForm"
+import  editInventoryItemForm from "./InventoryEditForm"
 
 
-//toggles the modal for the "Add Item" functionality
-const [modal, setModal] = useState(false)
-const toggle = () => setModal(!modal)
 
 //toggles the edit modal
-const [editModal, setEditModal] = useState(false)
-const toggleEdit = () => setEditModal(!editModal)
 
 
 export default (props) => {
     const {  removeInventoryItem } = useContext(InventoryItemContext)
-
+    
+    const [editModal, setEditModal] = useState(false)
+    const toggleEdit = () => setEditModal(!editModal)
+    
  return (
 
     <section className="inventoryItem">
@@ -38,10 +36,11 @@ export default (props) => {
 
     <Modal isOpen={editModal} toggle={toggleEdit}>
     <ModalHeader toggle={toggleEdit}> 
-        { updatedInventoryItem.name }
+        { props.inventoryItem.name }
     </ModalHeader>
     <ModalBody>
-        <editInventoryItemForm key={updatedInventoryItem.id} inventoryItem={props.inventoryItem} type={props.type} location={props.location} toggleEdit={toggleEdit} {...updatedInventoryItem} />
+        <editInventoryItemForm key={props.inventoryItem.id} forSale={props.forSale} inventoryItem={props.inventoryItem}
+         type={props.type} location={props.location} toggleEdit={toggleEdit}  />
     </ModalBody>
     </Modal>
 

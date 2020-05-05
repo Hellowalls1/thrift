@@ -1,15 +1,16 @@
 
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { InventoryItemContext } from "./InventoryProvider"
 import { StoreLocationContext } from "../location/StoreLocationProvider"
 import { ItemTypeContext } from "./ItemTypeProvider"
 import "./Inventory.css"
 
-export default editInventoryItemForm = ({ inventoryItem, type, location, toggleEdit }) => { //these are coming from the representation
+export const EditInventoryItemForm = ({ inventoryItem, type, location, forSale, toggleEdit }) => { //these are coming from the representation
     
     const { itemTypes } = useContext(ItemTypeContext)
     const { storeLocations } = useContext(StoreLocationContext)
     
+
     //udate function being pulled from provider
     const { updateInventoryItem } = useContext(InventoryItemContext)
     
@@ -41,7 +42,7 @@ export default editInventoryItemForm = ({ inventoryItem, type, location, toggleE
      const newInventoryItem = Object.assign({}, updatedInventoryItem)
        newInventoryItem[event.target.name] = event.target.value
     setInventoryItems(newInventoryItem)
-}
+}}
 
 //need a useEffect in the edit form to listen for if the "ifForSale" checkbox has changed line 46-54
 
@@ -63,13 +64,13 @@ export default editInventoryItemForm = ({ inventoryItem, type, location, toggleE
     const selectedLocationId = parseInt(location.current.value)
         
         updateInventoryItem({
-            name: name.current.value,
+            name: updatedInventoryItem.value,
             itemTypeId: itemType,
             locationId: selectedLocationId,
-            description: description.current.value,
-            purchasePrice: purchasePrice.current.value,
-            forSale: forSale.current.checked,
-            salePrice: salePrice.current.value,
+            description: updatedInventoryItem.description,
+            purchasePrice: updatedInventoryItem.purchasePrice,
+            forSale: updatedInventoryItem.forSale.current.checked,
+            salePrice: updatedInventoryItem.salePrice,
             timeStamp: new Date(),
             
     
@@ -118,8 +119,8 @@ export default editInventoryItemForm = ({ inventoryItem, type, location, toggleE
 
                     <option value="0">Select a Location</option>
                     {userDependentLocations.map(e => (
-                        <option key={i.id} value={i.id}>
-                            {i.name}
+                        <option key={e.id} value={e.id}>
+                            {e.name}
                         </option>
                     ))}
                 </select>
@@ -184,4 +185,4 @@ export default editInventoryItemForm = ({ inventoryItem, type, location, toggleE
             </button>
         </form>
     )
-            }}
+            }
