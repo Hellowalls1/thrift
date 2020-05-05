@@ -1,7 +1,7 @@
 import { InventoryItemContext } from "./InventoryProvider"
 import { Button, Modal, ModalHeader, ModalBody} from "reactstrap"
 import React, { useContext, useState } from "react"
-import  editInventoryItemForm from "./InventoryEditForm"
+import {EditInventoryItemForm} from "./InventoryEditForm"
 
 
 
@@ -13,7 +13,7 @@ export default (props) => {
     
     const [editModal, setEditModal] = useState(false)
     const toggleEdit = () => setEditModal(!editModal)
-    
+
  return (
 
     <section className="inventoryItem">
@@ -39,7 +39,7 @@ export default (props) => {
         { props.inventoryItem.name }
     </ModalHeader>
     <ModalBody>
-        <editInventoryItemForm key={props.inventoryItem.id} forSale={props.forSale} inventoryItem={props.inventoryItem}
+        <EditInventoryItemForm key={props.inventoryItem.id} forSale={props.forSale} inventoryItem={props.inventoryItem}
          type={props.type} location={props.location} toggleEdit={toggleEdit}  />
     </ModalBody>
     </Modal>

@@ -18,8 +18,8 @@ export const EditInventoryItemForm = ({ inventoryItem, type, location, forSale, 
     const [ ifForSale, setIfForSale] = useState() //tracking if the box is checkend
     
     
-    const userDependentLocations = storeLocations.filter(i => i.userId === newUserId )
     const newUserId =  parseInt(localStorage.getItem("thrift_customer"))
+    const userDependentLocations = storeLocations.filter(i => i.userId === newUserId )
     
     
     
