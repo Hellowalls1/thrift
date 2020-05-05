@@ -167,21 +167,6 @@ export default props => {
                 </div>
             </fieldset>
 
-            {/* <fieldset>
-                <div className="form-group">
-                    <label htmlFor="time">Time Purchased: </label>
-                    <input
-                        type="text"
-                        id="time"
-                        ref={time}
-                        required
-                        autoFocus
-                        className="form-control"
-                        placeholder="Time Purchased"
-                    />
-                </div>
-            </fieldset> */}
-      
             <button type="submit"
                 onClick={
                     evt => {

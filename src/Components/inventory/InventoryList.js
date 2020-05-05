@@ -20,6 +20,9 @@ export default () => {
     //setting the activeUser to the current user in local storage
     const activeUser = parseInt(localStorage.getItem("thrift_customer"))
 
+    //THE PURPOSE OF THE CODE BELOW IS TO CREATE A NEW ARRAY OF OBJECTS BASED ON ALL OF THE MAPS AND FILTERS
+    //SO THAT IT CAN GET CALLED AND MAPPED OVER IN THE RETURN
+
     //constructs a new array of storeLocations who have a userId === current user
     const userLocations = storeLocations.filter(loc => loc.userId === activeUser) //returning a new array of filter store locations and defining in a variable
     let  currentUserInventory = [] 
@@ -54,14 +57,7 @@ export default () => {
     }
       
         </div>
-        <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader toggle={toggle}>
-                    New Location
-                </ModalHeader>
-                <ModalBody>
-                    <InventoryItemForm toggler={toggle} />
-                </ModalBody>
-            </Modal>
+    
           </>
     )
 }
