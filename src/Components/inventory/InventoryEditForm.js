@@ -5,7 +5,7 @@ import { StoreLocationContext } from "../location/StoreLocationProvider"
 import { ItemTypeContext } from "./ItemTypeProvider"
 import "./Inventory.css"
 
-export const EditInventoryItemForm = ({ inventoryItem,  toggleEdit }) => { //these are coming from the representation
+export const EditInventoryItemForm = ({ inventoryItem, forSale, location, type, toggleEdit }) => { //these are coming from the representation
     
     const { storeLocations } = useContext(StoreLocationContext)
     
@@ -85,7 +85,7 @@ const editInventoryItem = () => {
         .then(toggleEdit)
         }
     
-
+        //"Type" must be equal to the key that is being changed
     return (
         <form className="itemEditForm">
         <fieldset>
@@ -101,7 +101,7 @@ const editInventoryItem = () => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="type">Type: </label>
-                <select name="type" className="form-control"
+                <select name="itemTypeId" className="form-control"
                     defaultValue={inventoryItem.itemTypeId}
                     onChange={handleControlledInputChange}>
 
@@ -117,8 +117,8 @@ const editInventoryItem = () => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="location">Purchase Location: </label>
-                <select name="location" className="form-control"
-                    defaultValue={inventoryItem.location}
+                <select name="locationId" className="form-control"
+                    defaultValue={inventoryItem.locationId}
                     onChange={handleControlledInputChange}>
 
                     <option value="0">Select a Location</option>
@@ -133,7 +133,7 @@ const editInventoryItem = () => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="itemDescription">Description:</label>
-                <input type="text" name="itemDescription" required autoFocus className="form-control"
+                <input type="text" name="description" required autoFocus className="form-control"
                     defaultValue={inventoryItem.description}
                     onChange={handleControlledInputChange}
                 />
@@ -144,7 +144,7 @@ const editInventoryItem = () => {
                 <label htmlFor="purchasePrice">Purchase Price: </label>
                 <input type="text" name="purchasePrice" required autoFocus className="form-control"
                     placeholder="Enter Price"
-                    defaultValue=""
+                    defaultValue={inventoryItem.purchasePrice}
                     onChange={handleControlledInputChange}
                 />
             </div>
@@ -156,7 +156,7 @@ const editInventoryItem = () => {
                 <input type="checkbox" name="ifForSale" required autoFocus className="form-control"
                     checked={ifForSale}
                     placeholder="Is it for Sale?"
-                    defaultValue=""
+                    defaultValue={inventoryItem.forSale}
                     onChange={handleControlledInputChange}
                 />
             </div>
@@ -166,7 +166,7 @@ const editInventoryItem = () => {
                 <label htmlFor="salePrice">Sale Price: </label>
                 <input type="text" name="salePrice" required autoFocus className="form-control"
                     placeholder="Enter Price"
-                    defaultValue=""
+                    defaultValue={inventoryItem.salePrice}
                     onChange={handleControlledInputChange}
                 />
             </div>
