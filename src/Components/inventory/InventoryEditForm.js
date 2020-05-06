@@ -5,7 +5,7 @@ import { StoreLocationContext } from "../location/StoreLocationProvider"
 import { ItemTypeContext } from "./ItemTypeProvider"
 import "./Inventory.css"
 
-export const EditInventoryItemForm = ({ inventoryItem, type, location, forSale, toggleEdit }) => { //these are coming from the representation
+export const EditInventoryItemForm = ({ inventoryItem,  toggleEdit }) => { //these are coming from the representation
     
     const { storeLocations } = useContext(StoreLocationContext)
     
@@ -13,20 +13,21 @@ export const EditInventoryItemForm = ({ inventoryItem, type, location, forSale, 
     //udate function being pulled from provider
     const { updateInventoryItem } = useContext(InventoryItemContext)
     
-    const [ updatedInventoryItem, setInventoryItems] = useState(inventoryItem)
-    const [ ifForSale, setIfForSale] = useState() //tracking if the box is checkend
     
+    // Separate state variable to track the inventoryItem as it is edited 
+    //updatedInventoryItem is the state variable & setInventoryItems is function from provider
+
+    const [ updatedInventoryItem, setInventoryItems] = useState(inventoryItem)
+
+    //state that tracks if the box has been checked
+
+    const [ ifForSale, setIfForSale] = useState() 
     
     //assigning localStorage dependent locations into a new variable 
     const newUserId =  parseInt(localStorage.getItem("thrift_customer"))
     const userDependentLocations = storeLocations.filter(i => i.userId === newUserId )
     
     const { itemTypes } = useContext(ItemTypeContext)
-    
-    
-    // Separate state variable to track the inventoryItem as it is edited 
-    //updatedInventoryItem is the state variable & setInventoryItems is function from provider
-    
     
     /*
     When changing a state object or array, always create a new one
@@ -60,7 +61,8 @@ useEffect(()=> {
 
 const editInventoryItem = () => {
     
-    
+    //must use the new state variable for the updated inventory item (inventoryItem is passed as an argument into use State)
+    //the object that you are sending to the api needs to be the Updated inventory state which is what happens in the edit form
     const itemType = parseInt(updatedInventoryItem.itemTypeId)
     const selectedLocationId = parseInt(updatedInventoryItem.locationId)
     
