@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react"
 import { InventoryItemContext } from "./InventoryProvider" //importing context object from Provider
 import { ItemTypeContext } from "./ItemTypeProvider"
 import { StoreLocationContext } from "../location/StoreLocationProvider"
-import { Button, Modal, ModalHeader, ModalBody} from "reactstrap"
+import { Button } from "reactstrap"
 import InventoryItem from "./InventoryItem"
 import InventoryItemForm from "./InventoryItemForm"
 import "./Inventory.css"
@@ -34,7 +34,7 @@ export default () => {
        })
         
     })
-    console.log(currentUserInventory)
+   
     
     
     return (

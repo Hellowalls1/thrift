@@ -47,7 +47,7 @@ export const ItemTypeProvider = (props) => {
 
     return (
         <ItemTypeContext.Provider value={{
-            itemTypes, addItemTypes
+            itemTypes, getItemTypes, addItemTypes
         }}>
             {props.children}
         </ItemTypeContext.Provider>

@@ -7,10 +7,9 @@ import "./Inventory.css"
 
 export const EditInventoryItemForm = ({ inventoryItem, type, location, forSale, toggleEdit }) => { //these are coming from the representation
     
-    const { itemTypes } = useContext(ItemTypeContext)
     const { storeLocations } = useContext(StoreLocationContext)
     
-
+    
     //udate function being pulled from provider
     const { updateInventoryItem } = useContext(InventoryItemContext)
     
@@ -18,60 +17,62 @@ export const EditInventoryItemForm = ({ inventoryItem, type, location, forSale, 
     const [ ifForSale, setIfForSale] = useState() //tracking if the box is checkend
     
     
+    //assigning localStorage dependent locations into a new variable 
     const newUserId =  parseInt(localStorage.getItem("thrift_customer"))
     const userDependentLocations = storeLocations.filter(i => i.userId === newUserId )
     
+    const { itemTypes } = useContext(ItemTypeContext)
     
     
     // Separate state variable to track the inventoryItem as it is edited 
     //updatedInventoryItem is the state variable & setInventoryItems is function from provider
-
+    
     
     /*
     When changing a state object or array, always create a new one
     and change state instead of modifying current one
     */
-
-    //checking to see if this is a checkbox 
+   
+   //checking to see if this is a checkbox 
    const handleControlledInputChange = (event) => {
-    if (event.target.name === "ifForSale") { //if for sale is the name of the fieldset
+       if (event.target.name === "ifForSale") { //if for sale is the name of the fieldset
         const newInventoryItem = Object.assign({}, updatedInventoryItem)
         newInventoryItem[event.target.name] = event.target.checked
         setInventoryItems(newInventoryItem)
-   } else {
-     const newInventoryItem = Object.assign({}, updatedInventoryItem)
+    } else {
+        const newInventoryItem = Object.assign({}, updatedInventoryItem)
        newInventoryItem[event.target.name] = event.target.value
-    setInventoryItems(newInventoryItem)
+       setInventoryItems(newInventoryItem)
 }}
 
 //need a useEffect in the edit form to listen for if the "ifForSale" checkbox has changed line 46-54
 
 //bringing the original value of the checkbox 
-    useEffect(()=> {
-        setIfForSale(inventoryItem.ifForSale)
-        },[])
+useEffect(()=> {
+    setIfForSale(inventoryItem.ifForSale)
+},[])
 
 //will change the value of ifForSale to new selection
-    useEffect(()=> {
+useEffect(()=> {
     setIfForSale(updatedInventoryItem.ifForSale)
-    },[updatedInventoryItem])
+},[updatedInventoryItem])
 
-   
-   const editInventoryItem = () => {
-       
+
+const editInventoryItem = () => {
     
-    const itemType = parseInt(type.current.value)
+    
+    const itemType = parseInt(itemType.current.value)
     const selectedLocationId = parseInt(location.current.value)
-        
-        updateInventoryItem({
-            name: updatedInventoryItem.value,
-            itemTypeId: itemType,
-            locationId: selectedLocationId,
-            description: updatedInventoryItem.description,
-            purchasePrice: updatedInventoryItem.purchasePrice,
-            forSale: updatedInventoryItem.forSale.current.checked,
-            salePrice: updatedInventoryItem.salePrice,
-            timeStamp: new Date(),
+    
+    updateInventoryItem({
+        name: updatedInventoryItem.value,
+        itemTypeId: itemType,
+        locationId: selectedLocationId,
+        description: updatedInventoryItem.description,
+        purchasePrice: updatedInventoryItem.purchasePrice,
+        forSale: updatedInventoryItem.forSale.current.checked,
+        salePrice: updatedInventoryItem.salePrice,
+        timeStamp: new Date(),
             
     
 
@@ -89,22 +90,22 @@ export const EditInventoryItemForm = ({ inventoryItem, type, location, forSale, 
                 <label htmlFor="name">Item Name: </label>
                 <input type="text" name="name" required autoFocus className="form-control"
                     placeholder="Item Name"
-                    defaultValue="inventoryItem.name"
+                    defaultValue={inventoryItem.name}
                     onChange={handleControlledInputChange}
                 />
             </div>
         </fieldset>
         <fieldset>
             <div className="form-group">
-                <label htmlFor="type">Location: </label>
+                <label htmlFor="type">Type: </label>
                 <select name="type" className="form-control"
                     defaultValue={inventoryItem.type}
                     onChange={handleControlledInputChange}>
 
                     <option value="0">Select a Type</option>
-                    {itemTypes.map(e => (
-                        <option key={e.id} value={e.id}>
-                            {e.name}
+                    {itemTypes.map(i => (
+                        <option key={i.id} value={i.id}>
+                            {i.name}
                         </option>
                     ))}
                 </select>
@@ -129,8 +130,8 @@ export const EditInventoryItemForm = ({ inventoryItem, type, location, forSale, 
         <fieldset>
             <div className="form-group">
                 <label htmlFor="itemDescription">Description:</label>
-                <input type="text" name="itemDescription" disabled className="form-control"
-                    defaultValue={inventoryItem.itemDescription}
+                <input type="text" name="itemDescription" required autoFocus className="form-control"
+                    defaultValue={inventoryItem.description}
                     onChange={handleControlledInputChange}
                 />
             </div>
@@ -145,16 +146,7 @@ export const EditInventoryItemForm = ({ inventoryItem, type, location, forSale, 
                 />
             </div>
         </fieldset>
-        <fieldset>
-            <div className="form-group">
-                <label htmlFor="purchasePrice">Purchase Price: </label>
-                <input type="text" name="purchasePrice" required autoFocus className="form-control"
-                    placeholder="Enter Price"
-                    defaultValue=""
-                    onChange={handleControlledInputChange}
-                />
-            </div>
-        </fieldset>
+
         <fieldset>
             <div className="form-group">
                 <label htmlFor="forSale">Select if Item is For Sale: </label>
