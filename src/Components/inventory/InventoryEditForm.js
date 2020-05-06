@@ -5,7 +5,7 @@ import { StoreLocationContext } from "../location/StoreLocationProvider"
 import { ItemTypeContext } from "./ItemTypeProvider"
 import "./Inventory.css"
 
-export const EditInventoryItemForm = ({ inventoryItem,  toggleEdit }) => { //these are coming from the representation
+export const EditInventoryItemForm = ({ inventoryItem, location, type,   toggleEdit }) => { //these are coming from the representation
     
     const { storeLocations } = useContext(StoreLocationContext)
     
@@ -144,7 +144,7 @@ const editInventoryItem = () => {
                 <label htmlFor="purchasePrice">Purchase Price: </label>
                 <input type="text" name="purchasePrice" required autoFocus className="form-control"
                     placeholder="Enter Price"
-                    defaultValue=""
+                    defaultValue={inventoryItem.purchasePrice}
                     onChange={handleControlledInputChange}
                 />
             </div>
@@ -156,7 +156,7 @@ const editInventoryItem = () => {
                 <input type="checkbox" name="ifForSale" required autoFocus className="form-control"
                     checked={ifForSale}
                     placeholder="Is it for Sale?"
-                    defaultValue=""
+                    defaultValue={inventoryItem.forSale}
                     onChange={handleControlledInputChange}
                 />
             </div>
@@ -166,7 +166,7 @@ const editInventoryItem = () => {
                 <label htmlFor="salePrice">Sale Price: </label>
                 <input type="text" name="salePrice" required autoFocus className="form-control"
                     placeholder="Enter Price"
-                    defaultValue=""
+                    defaultValue={inventoryItem.salePrice}
                     onChange={handleControlledInputChange}
                 />
             </div>
