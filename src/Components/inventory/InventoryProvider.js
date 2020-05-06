@@ -38,16 +38,16 @@ export const InventoryProvider = (props) => {
     }
 
     
-    const updateInventoryItem = inventoryItemId => {
-        return fetch(`http://localhost:8088/animals/${inventoryItemId}`, {
+    const updateInventoryItem = inventoryItem => {
+        return fetch(`http://localhost:8088/inventoryItems/${inventoryItem.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(inventoryItemId)
+            body: JSON.stringify(inventoryItem)
         })
-            .then(updateInventoryItem)
-    }
+            .then(getInventoryItems) //after you update must get new list of items to display
+            }
 
     /*
         Load all storeLocations when the component is mounted. Ensure that

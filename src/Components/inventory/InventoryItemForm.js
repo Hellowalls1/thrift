@@ -167,21 +167,6 @@ export default props => {
                 </div>
             </fieldset>
 
-            {/* <fieldset>
-                <div className="form-group">
-                    <label htmlFor="time">Time Purchased: </label>
-                    <input
-                        type="text"
-                        id="time"
-                        ref={time}
-                        required
-                        autoFocus
-                        className="form-control"
-                        placeholder="Time Purchased"
-                    />
-                </div>
-            </fieldset> */}
-      
             <button type="submit"
                 onClick={
                     evt => {
@@ -190,7 +175,7 @@ export default props => {
                     }
                 }
                 className="btn btn-primary">
-                Save Location
+                Save Item
             </button>
         </form>
     )

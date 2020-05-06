@@ -1,17 +1,25 @@
 import { InventoryItemContext } from "./InventoryProvider"
-import { Button } from "reactstrap"
-import React, { useContext } from "react"
+import { Button, Modal, ModalHeader, ModalBody} from "reactstrap"
+import React, { useContext, useState } from "react"
+import {EditInventoryItemForm} from "./InventoryEditForm"
+
+
+
+//toggles the edit modal
 
 
 export default (props) => {
     const {  removeInventoryItem } = useContext(InventoryItemContext)
+    
+    const [editModal, setEditModal] = useState(false)
+    const toggleEdit = () => setEditModal(!editModal)
 
  return (
 
     <section className="inventoryItem">
 
         <h3 className="inventory__name">{props.inventoryItem.name}</h3>
-        <div className="inventory__type">Item Type: {props.type.type}</div>
+        <div className="inventory__type">Item Type: {props.newType.type}</div>
         <div className="inventory__location">Purchased @ {props.location.name}</div>
         <div className="inventory__description">Description: {props.inventoryItem.description}</div>
         <div className="inventory__purchasePrice">Purchase Price: {props.inventoryItem.purchasePrice}</div>
@@ -19,10 +27,22 @@ export default (props) => {
         <div className="inventory__salePrice">Sale Price: {props.inventoryItem.salePrice}</div>
         <div className="inventory__timePurchased">Time Purchased: {props.inventoryItem.timeStamp}</div>
         <Button color="danger" onClick={() => {
+            removeInventoryItem(props.inventoryItem.id) 
+        }}>Delete</Button>
 
-removeInventoryItem(props.inventoryItem.id) 
+        <Button color="danger" onClick={() => {
+            {toggleEdit()}
+        }}>Edit</Button>
 
-}}>Delete</Button>
+    <Modal isOpen={editModal} toggle={toggleEdit}>
+    <ModalHeader toggle={toggleEdit}> 
+        { props.inventoryItem.name }
+    </ModalHeader>
+    <ModalBody>
+        <EditInventoryItemForm key={props.inventoryItem.id} forSale={props.forSale} inventoryItem={props.inventoryItem}
+         type={props.newType} location={props.location} toggleEdit={toggleEdit}  />
+    </ModalBody>
+    </Modal>
 
     </section>
  )
