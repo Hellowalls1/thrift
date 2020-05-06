@@ -61,16 +61,17 @@ useEffect(()=> {
 const editInventoryItem = () => {
     
     
-    const itemType = parseInt(itemType.current.value)
-    const selectedLocationId = parseInt(location.current.value)
+    const itemType = parseInt(updatedInventoryItem.itemTypeId)
+    const selectedLocationId = parseInt(updatedInventoryItem.locationId)
     
     updateInventoryItem({
-        name: updatedInventoryItem.value,
+        id: updatedInventoryItem.id,
+        name: updatedInventoryItem.name,
         itemTypeId: itemType,
         locationId: selectedLocationId,
         description: updatedInventoryItem.description,
         purchasePrice: updatedInventoryItem.purchasePrice,
-        forSale: updatedInventoryItem.forSale.current.checked,
+        forSale: updatedInventoryItem.forSale,
         salePrice: updatedInventoryItem.salePrice,
         timeStamp: new Date(),
             
@@ -99,13 +100,13 @@ const editInventoryItem = () => {
             <div className="form-group">
                 <label htmlFor="type">Type: </label>
                 <select name="type" className="form-control"
-                    defaultValue={inventoryItem.type}
+                    defaultValue={inventoryItem.itemTypeId}
                     onChange={handleControlledInputChange}>
 
                     <option value="0">Select a Type</option>
                     {itemTypes.map(i => (
                         <option key={i.id} value={i.id}>
-                            {i.name}
+                            {i.type}
                         </option>
                     ))}
                 </select>

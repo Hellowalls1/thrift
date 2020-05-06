@@ -175,7 +175,7 @@ export default props => {
                     }
                 }
                 className="btn btn-primary">
-                Save Location
+                Save Item
             </button>
         </form>
     )

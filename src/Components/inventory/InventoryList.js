@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react"
 import { InventoryItemContext } from "./InventoryProvider" //importing context object from Provider
 import { ItemTypeContext } from "./ItemTypeProvider"
 import { StoreLocationContext } from "../location/StoreLocationProvider"
-import { Button } from "reactstrap"
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
 import InventoryItem from "./InventoryItem"
 import InventoryItemForm from "./InventoryItemForm"
 import "./Inventory.css"
@@ -48,7 +48,7 @@ export default () => {
                  const theLocations = storeLocations.find(s => s.id === inv.locationId) || {} 
                    
               return <InventoryItem key={inv.id}
-              type={matchingItemType}
+              newType={matchingItemType}
               location={theLocations}
               inventoryItem={inv} />
                 
@@ -57,7 +57,18 @@ export default () => {
     }
       
         </div>
-    
+              
+       
+        <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>
+                    New Item
+                </ModalHeader>
+                <ModalBody>
+                    <InventoryItemForm toggler={toggle} />
+                </ModalBody>
+            </Modal>
           </>
+    
+    
     )
 }

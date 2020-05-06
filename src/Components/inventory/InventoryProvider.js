@@ -44,7 +44,7 @@ export const InventoryProvider = (props) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(inventoryItem.id)
+            body: JSON.stringify(inventoryItem)
         })
             .then(getInventoryItems) //after you update must get new list of items to display
             }

@@ -19,7 +19,7 @@ export default (props) => {
     <section className="inventoryItem">
 
         <h3 className="inventory__name">{props.inventoryItem.name}</h3>
-        <div className="inventory__type">Item Type: {props.type.type}</div>
+        <div className="inventory__type">Item Type: {props.newType.type}</div>
         <div className="inventory__location">Purchased @ {props.location.name}</div>
         <div className="inventory__description">Description: {props.inventoryItem.description}</div>
         <div className="inventory__purchasePrice">Purchase Price: {props.inventoryItem.purchasePrice}</div>
@@ -40,7 +40,7 @@ export default (props) => {
     </ModalHeader>
     <ModalBody>
         <EditInventoryItemForm key={props.inventoryItem.id} forSale={props.forSale} inventoryItem={props.inventoryItem}
-         type={props.type} location={props.location} toggleEdit={toggleEdit}  />
+         type={props.newType} location={props.location} toggleEdit={toggleEdit}  />
     </ModalBody>
     </Modal>
 
