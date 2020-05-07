@@ -19,7 +19,7 @@ export default () => {
     const userLocations = storeLocations.filter(loc => loc.userId === activeUser) 
     return (
         <>
-        <Button onClick={toggle}>Add A Store</Button>
+        <Button size="lg" onClick={toggle}>Add A Store</Button>
         <div className="storeLocations">
 
         {
