@@ -86,11 +86,13 @@ const editInventoryItem = () => {
         .then(toggleEdit)
         }
     
-        //"Type" must be equal to the key that is being changed
+        //"name" must be equal to the key that is being changed
+        //"defaultValue" is what value will be displayed on edit form render (former value)
+        //""
     return (
         <form className="itemEditForm">
         <fieldset>
-            <div className="editForm-group">
+            <div className="editForm-group"> 
                 <label htmlFor="name">Item Name: </label>
                 <input type="text" name="name" required autoFocus className="form-control"
                     placeholder="Item Name"
@@ -155,7 +157,7 @@ const editInventoryItem = () => {
             <div className="form-group">
                 <label htmlFor="forSale">Select if Item is For Sale: </label>
                 <input type="checkbox" name="forSale" required autoFocus className="form-control"
-                    checked={ifForSale} //
+                    checked={ifForSale} 
                     placeholder="Is it for Sale?"
                     defaultValue={inventoryItem.forSale}
                     onChange={handleControlledInputChange}
