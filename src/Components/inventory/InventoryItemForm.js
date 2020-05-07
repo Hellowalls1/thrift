@@ -23,7 +23,7 @@ export default props => {
     const userDependentLocations = storeLocations.filter(i => i.userId === newUserId )
     const constructNewItem = () => { 
         
-        //SHOULD userID GET ITS VALUE FROM LOCALSTORAGE??!?!
+        //storing parsed data into a new variable to be used in the object representation
         const itemType = parseInt(type.current.value)
         const selectedLocationId = parseInt(location.current.value)
         
