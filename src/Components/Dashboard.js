@@ -7,6 +7,7 @@ import "./Thrift.css"
 import { InventoryProvider } from "./inventory/InventoryProvider"
 import { ItemTypeProvider } from "./inventory/ItemTypeProvider"
 import InventoryList from "./inventory/InventoryList"
+import { Button } from "reactstrap"
 
 
 export const Dashboard = () => {
@@ -56,8 +57,8 @@ export const Dashboard = () => {
             <small>Keep Track of Your Shit and Occasionally Sell It To People</small>
             <div className="listContainer">
                 <div className="links">
-                    <div className="fakeLink href" onClick={() => setActiveList("storeLocations")}>Store Locations</div>
-                    <div className="fakeLink href" onClick={() => setActiveList("inventoryList")}>Inventory:</div>
+                     <Button color="primary" size="lg" onClick={() => setActiveList("storeLocations")}>Store Locations </Button> 
+                     <Button color="primary" size="lg" onClick={() => setActiveList("inventoryList")}>Inventory </Button>
                 </div>
                 <div className="listDisplay">
                     {components}
