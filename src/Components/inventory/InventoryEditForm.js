@@ -34,7 +34,8 @@ export const EditInventoryItemForm = ({ inventoryItem, forSale, location, type, 
     and change state instead of modifying current one
     */
    
-   //checking to see if this is a checkbox 
+   //checking to see if the user has clicked and checked the checkbox in if based on event.target.name (because checkboxes be fing weird)
+   //else runs second function if the event.target.name is different
    const handleControlledInputChange = (event) => {
        if (event.target.name === "forSale") { //if for sale is the name of the fieldset
         const newInventoryItem = Object.assign({}, updatedInventoryItem)
@@ -48,12 +49,12 @@ export const EditInventoryItemForm = ({ inventoryItem, forSale, location, type, 
 
 //need a useEffect in the edit form to listen for if the "ifForSale" checkbox has changed line 46-54
 
-//bringing the original value of the checkbox 
+//bringing the original value of the checkbox (setting it to the default value "i.e. not for sale") 
 useEffect(()=> {
     setIfForSale(inventoryItem.forSale)
 },[])
 
-//will change the value of ifForSale to new selection
+//will change the value of ifForSale to new selection if user is to change it
 useEffect(()=> {
     setIfForSale(updatedInventoryItem.forSale)
 },[updatedInventoryItem])
@@ -154,7 +155,7 @@ const editInventoryItem = () => {
             <div className="form-group">
                 <label htmlFor="forSale">Select if Item is For Sale: </label>
                 <input type="checkbox" name="forSale" required autoFocus className="form-control"
-                    checked={ifForSale}
+                    checked={ifForSale} //
                     placeholder="Is it for Sale?"
                     defaultValue={inventoryItem.forSale}
                     onChange={handleControlledInputChange}
