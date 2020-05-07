@@ -36,7 +36,7 @@ export const EditInventoryItemForm = ({ inventoryItem, forSale, location, type, 
    
    //checking to see if this is a checkbox 
    const handleControlledInputChange = (event) => {
-       if (event.target.name === "ifForSale") { //if for sale is the name of the fieldset
+       if (event.target.name === "forSale") { //if for sale is the name of the fieldset
         const newInventoryItem = Object.assign({}, updatedInventoryItem)
         newInventoryItem[event.target.name] = event.target.checked
         setInventoryItems(newInventoryItem)
@@ -50,12 +50,12 @@ export const EditInventoryItemForm = ({ inventoryItem, forSale, location, type, 
 
 //bringing the original value of the checkbox 
 useEffect(()=> {
-    setIfForSale(inventoryItem.ifForSale)
+    setIfForSale(inventoryItem.forSale)
 },[])
 
 //will change the value of ifForSale to new selection
 useEffect(()=> {
-    setIfForSale(updatedInventoryItem.ifForSale)
+    setIfForSale(updatedInventoryItem.forSale)
 },[updatedInventoryItem])
 
 
@@ -153,7 +153,7 @@ const editInventoryItem = () => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="forSale">Select if Item is For Sale: </label>
-                <input type="checkbox" name="ifForSale" required autoFocus className="form-control"
+                <input type="checkbox" name="forSale" required autoFocus className="form-control"
                     checked={ifForSale}
                     placeholder="Is it for Sale?"
                     defaultValue={inventoryItem.forSale}
