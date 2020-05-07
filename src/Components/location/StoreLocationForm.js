@@ -5,7 +5,7 @@ import "./StoreLocation.css"
 export default props => {
     const { addStoreLocation } = useContext(StoreLocationContext)
     
-
+    //reference to the DOM through react
     const name = useRef()
     const address = useRef()
     const storeHours = useRef()
@@ -13,7 +13,6 @@ export default props => {
 
     const constructNewStoreLocation = () => { 
 
-        //SHOULD userID GET ITS VALUE FROM LOCALSTORAGE??!?!
         const userId =  parseInt(localStorage.getItem("thrift_customer"))
 
         //locationId === 0 is the "choose" message that is displaying 
@@ -83,7 +82,7 @@ export default props => {
                 onClick={
                     evt => {
                         evt.preventDefault() // Prevent browser from submitting the form
-                        constructNewStoreLocation()
+                        constructNewStoreLocation() //calling the function so that the store location is created on click
                     }
                 }
                 className="btn btn-primary">
