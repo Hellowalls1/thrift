@@ -34,13 +34,15 @@ export default (props) => {
             {toggleEdit()}
         }}>Edit</Button>
 
+
+
     <Modal isOpen={editModal} toggle={toggleEdit}>
     <ModalHeader toggle={toggleEdit}> 
         { props.inventoryItem.name }
     </ModalHeader>
     <ModalBody>
-        <EditInventoryItemForm key={props.inventoryItem.id} forSale={props.forSale} inventoryItem={props.inventoryItem}
-         type={props.newType} location={props.location} toggleEdit={toggleEdit}  />
+        <EditInventoryItemForm key={props.inventoryItem.id} inventoryItem={props.inventoryItem}
+      toggleEdit={toggleEdit}  />
     </ModalBody>
     </Modal>
 

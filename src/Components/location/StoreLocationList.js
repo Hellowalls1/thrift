@@ -43,7 +43,9 @@ export default () => {
         }) 
         
     }
-      
+        {/*       
+        this is the modal that holds the StoreLocationForm
+         */}
         </div>
         <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
