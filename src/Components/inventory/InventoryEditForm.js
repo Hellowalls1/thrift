@@ -5,7 +5,7 @@ import { StoreLocationContext } from "../location/StoreLocationProvider"
 import { ItemTypeContext } from "./ItemTypeProvider"
 import "./Inventory.css"
 
-export const EditInventoryItemForm = ({ inventoryItem, location, type,   toggleEdit }) => { //these are coming from the representation
+export const EditInventoryItemForm = ({ inventoryItem, forSale, location, type, toggleEdit }) => { //these are coming from the representation
     
     const { storeLocations } = useContext(StoreLocationContext)
     
@@ -34,9 +34,10 @@ export const EditInventoryItemForm = ({ inventoryItem, location, type,   toggleE
     and change state instead of modifying current one
     */
    
-   //checking to see if this is a checkbox 
+   //checking to see if the user has clicked and checked the checkbox in if based on event.target.name (because checkboxes be fing weird)
+   //else runs second function if the event.target.name is different
    const handleControlledInputChange = (event) => {
-       if (event.target.name === "ifForSale") { //if for sale is the name of the fieldset
+       if (event.target.name === "forSale") { //if for sale is the name of the fieldset
         const newInventoryItem = Object.assign({}, updatedInventoryItem)
         newInventoryItem[event.target.name] = event.target.checked
         setInventoryItems(newInventoryItem)
@@ -48,14 +49,14 @@ export const EditInventoryItemForm = ({ inventoryItem, location, type,   toggleE
 
 //need a useEffect in the edit form to listen for if the "ifForSale" checkbox has changed line 46-54
 
-//bringing the original value of the checkbox 
+//bringing the original value of the checkbox (setting it to the default value "i.e. not for sale") 
 useEffect(()=> {
-    setIfForSale(inventoryItem.ifForSale)
+    setIfForSale(inventoryItem.forSale)
 },[])
 
-//will change the value of ifForSale to new selection
+//will change the value of ifForSale to new selection if user is to change it
 useEffect(()=> {
-    setIfForSale(updatedInventoryItem.ifForSale)
+    setIfForSale(updatedInventoryItem.forSale)
 },[updatedInventoryItem])
 
 
@@ -85,7 +86,7 @@ const editInventoryItem = () => {
         .then(toggleEdit)
         }
     
-
+        //"Type" must be equal to the key that is being changed
     return (
         <form className="itemEditForm">
         <fieldset>
@@ -101,7 +102,7 @@ const editInventoryItem = () => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="type">Type: </label>
-                <select name="type" className="form-control"
+                <select name="itemTypeId" className="form-control"
                     defaultValue={inventoryItem.itemTypeId}
                     onChange={handleControlledInputChange}>
 
@@ -117,8 +118,8 @@ const editInventoryItem = () => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="location">Purchase Location: </label>
-                <select name="location" className="form-control"
-                    defaultValue={inventoryItem.location}
+                <select name="locationId" className="form-control"
+                    defaultValue={inventoryItem.locationId}
                     onChange={handleControlledInputChange}>
 
                     <option value="0">Select a Location</option>
@@ -133,7 +134,7 @@ const editInventoryItem = () => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="itemDescription">Description:</label>
-                <input type="text" name="itemDescription" required autoFocus className="form-control"
+                <input type="text" name="description" required autoFocus className="form-control"
                     defaultValue={inventoryItem.description}
                     onChange={handleControlledInputChange}
                 />
@@ -153,8 +154,8 @@ const editInventoryItem = () => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="forSale">Select if Item is For Sale: </label>
-                <input type="checkbox" name="ifForSale" required autoFocus className="form-control"
-                    checked={ifForSale}
+                <input type="checkbox" name="forSale" required autoFocus className="form-control"
+                    checked={ifForSale} //
                     placeholder="Is it for Sale?"
                     defaultValue={inventoryItem.forSale}
                     onChange={handleControlledInputChange}
