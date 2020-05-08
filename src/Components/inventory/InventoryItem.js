@@ -26,7 +26,7 @@ export default (props) => {
         <div className="inventory__forSale">For Sale ? : {props.inventoryItem.forSale ? "Yes" : "No"}</div>
         <div className="inventory__salePrice">Sale Price: {props.inventoryItem.salePrice}</div>
         <div className="inventory__timePurchased">Time Purchased: {props.inventoryItem.timeStamp}</div>
-        <Button color="danger" onClick={() => {
+        <Button className="deleteButton" color="danger" onClick={() => {
             removeInventoryItem(props.inventoryItem.id) 
         }}>Delete</Button>
 

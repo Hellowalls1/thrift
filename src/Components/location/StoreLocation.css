@@ -1,15 +1,18 @@
 
 .storeLocation {
+    
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: no-wrap;
     justify-content: space-between;
     margin: 2rem;
   }
   
   
-  .storeLocations {
+  .addStore {
+    display: flex;
     flex-basis: 28%;
     margin: 1em;
     padding: 1em;
+    justify-content: center;
  
 }

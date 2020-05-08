@@ -20,7 +20,7 @@ export default () => {
     return (
         <>
         <Button size="lg" onClick={toggle}>Add A Store</Button>
-        <div className="storeLocations">
+        <div className="addStore">
 
         {
             

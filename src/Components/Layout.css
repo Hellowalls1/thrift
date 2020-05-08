@@ -4,12 +4,6 @@
     padding: 0.75rem;
 }
 
-.searchContainer {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 2rem;
-}
 
 .dataContainer {
     padding: 2rem;
@@ -23,10 +17,14 @@
 }
 
 .links {
-    flex: 2;
+    flex: 1;
     margin: 2rem;
 }
 
 .listDisplay {
-    flex: 5;
+    flex: 1;
+}
+
+.logo{
+    justify-content: center;
 }

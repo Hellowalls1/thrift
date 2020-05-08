@@ -16,7 +16,7 @@ const [e, setStoreLocations] = useState({storeLocation: {id: 0}, name: null, add
 <CardText>Address: {storeLocation.address}</CardText>
 <CardText>Hours: {storeLocation.storeHours}</CardText>
 
-<Button color="danger" onClick={() => {
+<Button color="light" onClick={() => {
   
   removeStoreLocation(storeLocation.id) //utilizing the delete from the provider and passing the storeLocation id
   setStoreLocations({ storeLocations }) //repopulating the page with the new store locations

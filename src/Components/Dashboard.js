@@ -8,6 +8,7 @@ import { InventoryProvider } from "./inventory/InventoryProvider"
 import { ItemTypeProvider } from "./inventory/ItemTypeProvider"
 import InventoryList from "./inventory/InventoryList"
 import { Button } from "reactstrap"
+import Logo from "./logo.png"
 
 
 export const Dashboard = () => {
@@ -53,9 +54,11 @@ export const Dashboard = () => {
       
         <div className="mainContainer">
         <div className="dataContainer">
-            <h1>Thrift</h1>
-            <small>Keep Track of Your Shit and Occasionally Sell It To People</small>
-            <div className="listContainer">
+        <div className="logo">
+          <img src={Logo} width="200" height="200" />
+        </div>
+            
+            <div className="sidenav">
                 <div className="links">
                      <Button color="primary" size="lg" onClick={() => setActiveList("storeLocations")}>Store Locations </Button> 
                      <Button color="primary" size="lg" onClick={() => setActiveList("inventoryList")}>Inventory </Button>
