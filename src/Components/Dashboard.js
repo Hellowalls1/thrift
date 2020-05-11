@@ -53,20 +53,26 @@ export const Dashboard = () => {
     return (
       
         <div className="mainContainer">
-        <div className="dataContainer">
         <div className="logo">
-          <img src={Logo} width="200" height="200" />
+          <img src={Logo} />
         </div>
-            
-            <div className="sidenav">
+            <div className="nav">
                 <div className="links">
-                     <Button color="primary" size="lg" onClick={() => setActiveList("storeLocations")}>Store Locations </Button> 
-                     <Button color="primary" size="lg" onClick={() => setActiveList("inventoryList")}>Inventory </Button>
+                    <div className="inventoryButton">
+                        <Button color="primary" size="lg" onClick={() => setActiveList("storeLocations")}>Store Locations </Button> 
+                    </div>
+
+                    <div className="storeButton">
+                        <Button color="primary" size="lg" onClick={() => setActiveList("inventoryList")}>Inventory </Button>
+                    </div>
+
                 </div>
+            </div>
+            
+        <div className="dataContainer">
                 <div className="listDisplay">
                     {components}
                 </div>
-            </div>
 
         </div>
     </div>
