@@ -68,14 +68,18 @@ console.log(currentUserInventory)
 
     return (
         <>
-        <Button onClick={toggle}>Add an Item</Button>
+        <div className="addItemButton">
+        <Button size="lg" onClick={toggle}>Add an Item</Button>
+        </div>
+
         <div className="inventoryItems">
 
-        <Dropdown 
-         isOpen={dropdownOpen} toggle={dropdownToggle}>
-        <DropdownToggle caret>
+        <Dropdown  isOpen={dropdownOpen} toggle={dropdownToggle} >
+       <div className="displayButton">
+        <DropdownToggle size="lg" caret>
         Display
         </DropdownToggle>
+       </div>
 
         <DropdownMenu>
         <DropdownItem onClick={e => { 

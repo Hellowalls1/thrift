@@ -6,7 +6,7 @@
 
 
 .dataContainer {
-    padding: 2rem;
+    padding: 0rem;
     flex: 1 1;
     display: flex;
     justify-content: center;
@@ -26,12 +26,23 @@
     flex-direction: column;
 }
 
-.listDisplay {
- 
-    flex: 1 1;
+ .listDisplay {
+        flex: 1 1;
+        display: grid;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+.displayButton {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+}
+
+.addItemButton {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
 }
 
 .logo{
