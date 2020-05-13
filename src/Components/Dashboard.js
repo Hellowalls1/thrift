@@ -58,11 +58,11 @@ export const Dashboard = () => {
         </div>
             <div className="nav">
                 <div className="links">
-                    <div className="inventoryButton">
+                    <div className="storeButton">
                         <Button color="primary" size="lg" onClick={() => setActiveList("storeLocations")}>Store Locations </Button> 
                     </div>
 
-                    <div className="storeButton">
+                    <div className="inventoryButton">
                         <Button color="primary" size="lg" onClick={() => setActiveList("inventoryList")}>Inventory </Button>
                     </div>
 
