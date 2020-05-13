@@ -34,6 +34,11 @@
         flex-direction: column;
     }
 
+.storeButton{
+    display: flex;
+    margin: 1rem;
+    
+}
 .displayButton {
     display: flex;
     justify-content: center;

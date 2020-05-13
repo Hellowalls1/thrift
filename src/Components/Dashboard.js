@@ -21,9 +21,9 @@ export const Dashboard = () => {
 
         
         <StoreLocationProvider>
-        <UserProvider>
-            <StoreLocationList />
-        </UserProvider>
+            <UserProvider>
+                <StoreLocationList />
+            </UserProvider>
         </StoreLocationProvider>
     
     )
@@ -31,13 +31,13 @@ export const Dashboard = () => {
     const showInventoryList = () => (
         
         <UserProvider>
-        <StoreLocationProvider> 
-        <InventoryProvider>
-        <ItemTypeProvider>
-            <InventoryList />
-        </ItemTypeProvider>
-        </InventoryProvider>
-        </StoreLocationProvider>
+            <StoreLocationProvider> 
+                <InventoryProvider>
+                    <ItemTypeProvider>
+                        <InventoryList />
+                    </ItemTypeProvider>
+                </InventoryProvider>
+            </StoreLocationProvider>
         </UserProvider>
         )
 
@@ -63,7 +63,7 @@ export const Dashboard = () => {
                     </div>
 
                     <div className="inventoryButton">
-                        <Button color="primary" size="lg" onClick={() => setActiveList("inventoryList")}>Inventory </Button>
+                        <Button color="primary" size="lg" onClick={() => setActiveList("inventoryList")}>   Inventory  </Button>
                     </div>
 
                 </div>

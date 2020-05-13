@@ -49,10 +49,15 @@ console.log(currentUserInventory)
 
   
   //waiting for inventory items to change and when change it will filter new array of inventory items by the dropdown value that was chosen before
+ // if the dropdown value is not All Items just show what you chose, else show all inventory Items
  
   useEffect(() => {
+      if (dropDownValue !== 0) {
             const filteredUserInventory = currentUserInventory.filter(ci => ci.itemTypeId === dropDownValue)
             setFiltered(filteredUserInventory)
+      } else {
+          setFiltered(currentUserInventory)
+      }
     },[inventoryItems])
 
     //setting the value of filtered to a new array of objects based on what Id was chosen 
@@ -86,7 +91,9 @@ console.log(currentUserInventory)
         <DropdownMenu>
         <DropdownItem onClick={e => { 
                         e.preventDefault()
-                        setFiltered(currentUserInventory)}}
+                        setFiltered(currentUserInventory)
+                        setDropDownValue(0)
+                    }}
                         > All Items </DropdownItem>
   {
             itemTypes.map (type => {

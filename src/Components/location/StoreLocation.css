@@ -8,12 +8,28 @@
   }
   
   
-  .addStore {
+.addStore {
     display: flex;
- 
     margin: 1em;
     padding: 1em;
     justify-content: center;
     flex-direction: column;
- 
+}
+
+.store__title {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+}
+
+.store__address{
+  display: flex;
+  justify-content: center;
+  font-size: medium;
+}
+
+.store__hours{
+  display: flex;
+  justify-content: center;
+  font-size: medium;
 }

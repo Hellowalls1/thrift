@@ -12,15 +12,14 @@ const [e, setStoreLocations] = useState({storeLocation: {id: 0}, name: null, add
   <div class="shadow-lg p-3 mb-5 bg-white rounded" className="storeLocation">
 
   <Card body inverse color="primary" >
-<CardTitle>{storeLocation.name}</CardTitle>
-<CardText>Address: {storeLocation.address}</CardText>
-<CardText>Hours: {storeLocation.storeHours}</CardText>
+    <CardTitle className="store__title">{storeLocation.name}</CardTitle>
+      <CardText className="store__address">Address: {storeLocation.address}</CardText>
+      <CardText className="store__hours">Hours: {storeLocation.storeHours}</CardText>
 
-<Button color="light" onClick={() => {
-  
-  removeStoreLocation(storeLocation.id) //utilizing the delete from the provider and passing the storeLocation id
-  setStoreLocations({ storeLocations }) //repopulating the page with the new store locations
-}}>Delete</Button>
+      <Button color="light" onClick={() => {
+        removeStoreLocation(storeLocation.id) //utilizing the delete from the provider and passing the storeLocation id
+        setStoreLocations({ storeLocations }) //repopulating the page with the new store locations
+      }}>Delete</Button>
 
   </Card>
 </div>
