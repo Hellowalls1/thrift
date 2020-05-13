@@ -5,7 +5,7 @@ import { StoreLocationContext } from "../location/StoreLocationProvider"
 import { ItemTypeContext } from "./ItemTypeProvider"
 import "./Inventory.css"
 
-export const EditInventoryItemForm = ({ inventoryItem, forSale, location, type, toggleEdit }) => { //these are coming from the representation
+export const EditInventoryItemForm = ({ inventoryItem,  toggleEdit }) => { //these are coming from the representation
     
     const { storeLocations } = useContext(StoreLocationContext)
     
@@ -86,7 +86,7 @@ const editInventoryItem = () => {
         .then(toggleEdit)
         }
     
-        //"Type" must be equal to the key that is being changed
+        //"name" must be equal to the key that is being changed
     return (
         <form className="itemEditForm">
         <fieldset>

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react"
 import { StoreLocationContext } from "./StoreLocationProvider" //importing context object from Provider
 import StoreLocation from "./StoreLocation"
 import { UserContext } from "./UserProvider"
-import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
+import { Button, Modal, ModalHeader, ModalBody,  Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap"
 import  StoreLocationForm  from "./StoreLocationForm"
 import "./StoreLocation.css"
 
@@ -20,7 +20,7 @@ export default () => {
     return (
         <>
         <Button size="lg" onClick={toggle}>Add A Store</Button>
-        <div className="storeLocations">
+        <div className="addStore">
 
         {
             

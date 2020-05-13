@@ -1,14 +1,10 @@
-
-.storeLocation {
+.inventoryItem {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border: 2px solid blue;
-  }
-  
-  .storeLocations {
-      flex-basis: 28%;
-      margin: 1em;
-      padding: 1em;
-      border: 1px solid black;
-  }
+ 
+    margin: 1em;
+    padding: 1em;
+    justify-content: center;
+    flex-direction: column;
+ 
+
+}

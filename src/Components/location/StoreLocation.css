@@ -1,13 +1,19 @@
 
 .storeLocation {
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: 2rem;
   }
   
-  .storeLocations {
-      flex-basis: 28%;
-      margin: 1em;
-      padding: 1em;
-      border: 1px solid goldenrod;
-  }
+  
+  .addStore {
+    display: flex;
+ 
+    margin: 1em;
+    padding: 1em;
+    justify-content: center;
+    flex-direction: column;
+ 
+}

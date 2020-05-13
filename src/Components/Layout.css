@@ -1,31 +1,67 @@
 .mainContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 0.75rem;
 }
 
-.searchContainer {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 2rem;
-}
 
 .dataContainer {
-    padding: 2rem;
-    flex: 4;
+    padding: 0rem;
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
 }
 .listContainer {
     padding-top: 3rem;
     border-top: 1px solid gray;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .links {
-    flex: 1;
+    margin: 2rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
-.listDisplay {
-    flex: 5;
+ .listDisplay {
+        flex: 1 1;
+        display: grid;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+.displayButton {
+    display: flex;
+    justify-content: center;
 }
+
+.addItemButton {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.logo{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-left: 21px;
+}
+
+
+ .nav {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        flex-direction: column;
+        align-content: center;
+ }
+    
+    
