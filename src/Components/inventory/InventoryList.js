@@ -23,9 +23,7 @@ export default (props) => {
     //setting the activeUser to the current user in local storage
     const activeUser = parseInt(localStorage.getItem("thrift_customer"))
     
-    //THE PURPOSE OF THE CODE BELOW IS TO CREATE A NEW ARRAY OF OBJECTS BASED ON ALL OF THE MAPS AND FILTERS
-    //SO THAT IT CAN GET CALLED AND MAPPED OVER IN THE RETURN
-    
+
     //constructs a new array of storeLocations who have a userId === current user
     const userLocations = storeLocations.filter(loc => loc.userId === activeUser) //returning a new array of filter store locations and defining in a variable
     
@@ -43,18 +41,21 @@ export default (props) => {
 
 console.log(currentUserInventory)
 
+    //setFiltered is what filters the items based on what item from dropDown is selected and filtered is an array of the objects selected by Id
+
   const [filtered, setFiltered] = useState([])
 
- 
-    useEffect(() => {
-      setFiltered(currentUserInventory)
-     },[])
-    useEffect(() => {
-        if (filtered === []) {
-      setFiltered(currentUserInventory)}
+   //dropDownValue keeps track of the selected dropdown value (setDropDownValue is recording what previous dropdown selection was)
+  const [dropDownValue, setDropDownValue] = useState("")
 
-        },[userLocations, inventoryItems])
+  
+  //waiting for inventory items to change and when change it will filter new array of inventory items by the dropdown value that was chosen before
+  useEffect(() => {
+            const filteredUserInventory = currentUserInventory.filter(ci => ci.itemTypeId === dropDownValue)
+            setFiltered(filteredUserInventory)
+    },[inventoryItems])
 
+    //setting the value of filtered to a new array of objects based on what Id was chosen 
   const filterTheInventory = idChosen => {
     const filteredUserInventory = currentUserInventory.filter(ci => ci.itemTypeId === idChosen)
     setFiltered(filteredUserInventory)
@@ -93,6 +94,7 @@ console.log(currentUserInventory)
                     <DropdownItem onClick={e => { 
                         e.preventDefault()
                         filterTheInventory(type.id) //setting the filtered to the id of the type that is selected from dropdoiwn
+                        setDropDownValue(type.id)
                         console.log(type.id)
                      }} value={type.id}>{type.type}</DropdownItem>
                     )
