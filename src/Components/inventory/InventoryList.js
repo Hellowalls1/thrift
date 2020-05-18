@@ -35,8 +35,6 @@ export default (props) => {
             } else {
             return false
             } 
-
-    
 }) || [] 
 
 console.log(currentUserInventory)
@@ -46,17 +44,25 @@ console.log(currentUserInventory)
   const [filtered, setFiltered] = useState([])
 
    //dropDownValue keeps track of the selected dropdown value (setDropDownValue is recording what previous dropdown selection was)
-  const [dropDownValue, setDropDownValue] = useState("")
+ 
+   const [dropDownValue, setDropDownValue] = useState("")
 
   
   //waiting for inventory items to change and when change it will filter new array of inventory items by the dropdown value that was chosen before
+ // if the dropdown value is not All Items just show what you chose, else show all inventory Items
+ 
   useEffect(() => {
+      if (dropDownValue !== 0) {
             const filteredUserInventory = currentUserInventory.filter(ci => ci.itemTypeId === dropDownValue)
             setFiltered(filteredUserInventory)
+      } else {
+          setFiltered(currentUserInventory)
+      }
     },[inventoryItems])
 
     //setting the value of filtered to a new array of objects based on what Id was chosen 
-  const filterTheInventory = idChosen => {
+
+    const filterTheInventory = idChosen => {
     const filteredUserInventory = currentUserInventory.filter(ci => ci.itemTypeId === idChosen)
     setFiltered(filteredUserInventory)
 
@@ -70,13 +76,13 @@ console.log(currentUserInventory)
     return (
         <>
         <div className="addItemButton">
-        <Button size="lg" onClick={toggle}>Add an Item</Button>
+         <Button size="lg" onClick={toggle}>Add an Item</Button>
         </div>
 
         <div className="inventoryItems">
 
         <Dropdown  isOpen={dropdownOpen} toggle={dropdownToggle} >
-       <div className="displayButton">
+        <div className="displayButton">
         <DropdownToggle size="lg" caret>
         Display
         </DropdownToggle>
@@ -85,7 +91,9 @@ console.log(currentUserInventory)
         <DropdownMenu>
         <DropdownItem onClick={e => { 
                         e.preventDefault()
-                        setFiltered(currentUserInventory)}}
+                        setFiltered(currentUserInventory)
+                        setDropDownValue(0)
+                    }}
                         > All Items </DropdownItem>
   {
             itemTypes.map (type => {
@@ -93,8 +101,8 @@ console.log(currentUserInventory)
                 return (
                     <DropdownItem onClick={e => { 
                         e.preventDefault()
-                        filterTheInventory(type.id) //setting the filtered to the id of the type that is selected from dropdoiwn
-                        setDropDownValue(type.id)
+                        filterTheInventory(type.id) //setting the filtered to the id of the type that is selected from dropdown
+                        setDropDownValue(type.id) 
                         console.log(type.id)
                      }} value={type.id}>{type.type}</DropdownItem>
                     )
@@ -106,7 +114,7 @@ console.log(currentUserInventory)
     </Dropdown>
 
 
-        {/* Mapping over only the current user inventory array that was created above */}
+        {/* Mapping over only the current user inventory array that was created in filtered */}
         
         {       
                filtered.map(inv => {

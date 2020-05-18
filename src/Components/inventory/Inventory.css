@@ -8,3 +8,19 @@
  
 
 }
+
+
+
+.inventory__name{
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.inventory__location{
+        display: flex;
+        justify-content: center;
+        font-size: large;
+        font-weight: bold;
+}

@@ -16,12 +16,12 @@ export default (props) => {
 
  return (
 
-    <div class="shadow-lg p-3 mb-5 bg-white rounded" className="inventoryItem">
+    <div className="shadow-lg p-3 mb-5 bg-white rounded" className="inventoryItem">
 <Card body inverse color="primary" >
 
      <CardTitle className="inventory__name">{props.inventoryItem.name}</CardTitle>   
-       <CardText className="inventory__type">Item Type: {props.newType.type}</CardText>
        <CardText   className="inventory__location">Purchased @ {props.location.name}</CardText>
+       <CardText className="inventory__type">Item Type: {props.newType.type}</CardText>
        <CardText   className="inventory__description">Description: {props.inventoryItem.description}</CardText>
        <CardText   className="inventory__purchasePrice">Purchase Price: {props.inventoryItem.purchasePrice}</CardText>
        <CardText   className="inventory__forSale">For Sale ? : {props.inventoryItem.forSale ? "Yes" : "No"}</CardText>
