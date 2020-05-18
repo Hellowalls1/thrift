@@ -76,13 +76,13 @@ console.log(currentUserInventory)
     return (
         <>
         <div className="addItemButton">
-        <Button size="lg" onClick={toggle}>Add an Item</Button>
+         <Button size="lg" onClick={toggle}>Add an Item</Button>
         </div>
 
         <div className="inventoryItems">
 
         <Dropdown  isOpen={dropdownOpen} toggle={dropdownToggle} >
-       <div className="displayButton">
+        <div className="displayButton">
         <DropdownToggle size="lg" caret>
         Display
         </DropdownToggle>
